@@ -8,7 +8,6 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.colors import ListedColormap
-from pandas._config.config import pp_options_list
 import os
 import scipy.ndimage
 
@@ -660,6 +659,10 @@ def try_fit(plate_shape, objects_to_place, resolution=1, generations=50, individ
     return best_plate, best_placements, best_fitness
 
 
-obj = [(42, 9.5)]
-
-best_plate, best_placements, best_fitness = try_fit((122, 244), obj, resolution=10, generations=500, individual_per_generation=200, mutation_rate=0.4)
+if __name__ == "__main__":
+    # 42 x 9.5 rectangles packed on a 122 x 244 plate
+    obj = [(42, 9.5)]
+    best_plate, best_placements, best_fitness = try_fit(
+        (122, 244), obj, resolution=10, generations=500,
+        individual_per_generation=200, mutation_rate=0.4,
+    )
